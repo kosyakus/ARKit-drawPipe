@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/ViewController.swift"
+            timestampString = "548253902.1268311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "didTap(withGestureRecognizer:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
+            timestampString = "548253902.137671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "createBox(locationNode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
+            timestampString = "548253902.1827641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
+            landmarkName = "updatePositionOfLocationNodes(locationNodeFrom:locationNodeTo:initialSetup:animated:duration:line:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
+            timestampString = "548253902.187016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "596"
+            endingLineNumber = "596"
+            landmarkName = "updatePositionOfLocationNodesDrawBox(locationNode:initialSetup:animated:duration:box:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

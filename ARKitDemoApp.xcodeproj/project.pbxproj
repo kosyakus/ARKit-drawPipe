@@ -7,15 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E142C70620A5CA9A008F39D8 /* SCNGeometry+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E142C70520A5CA9A008F39D8 /* SCNGeometry+Extention.swift */; };
 		E15093F6207CAAD90089492E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15093F5207CAAD90089492E /* AppDelegate.swift */; };
 		E15093F8207CAAD90089492E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = E15093F7207CAAD90089492E /* art.scnassets */; };
 		E15093FA207CAAD90089492E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15093F9207CAAD90089492E /* ViewController.swift */; };
 		E15093FD207CAAD90089492E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15093FB207CAAD90089492E /* Main.storyboard */; };
 		E15093FF207CAADF0089492E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15093FE207CAADF0089492E /* Assets.xcassets */; };
 		E1509402207CAADF0089492E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1509400207CAADF0089492E /* LaunchScreen.storyboard */; };
+		E1509411207EB1100089492E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E150940F207EB10F0089492E /* Crashlytics.framework */; };
+		E1509412207EB1100089492E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1509410207EB1100089492E /* Fabric.framework */; };
+		E15094382094BE720089492E /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150942E2094BE720089492E /* SCNVector3+Extensions.swift */; };
+		E15094392094BE720089492E /* SceneLocationEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150942F2094BE720089492E /* SceneLocationEstimate.swift */; };
+		E150943A2094BE720089492E /* SceneLocationEstimate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094302094BE720089492E /* SceneLocationEstimate+Extensions.swift */; };
+		E150943B2094BE720089492E /* FloatingPoint+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094312094BE720089492E /* FloatingPoint+Radians.swift */; };
+		E150943C2094BE720089492E /* LocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094322094BE720089492E /* LocationNode.swift */; };
+		E150943D2094BE720089492E /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094332094BE720089492E /* CGPoint+Extensions.swift */; };
+		E150943E2094BE720089492E /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094342094BE720089492E /* CLLocation+Extensions.swift */; };
+		E150943F2094BE720089492E /* SceneLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094352094BE720089492E /* SceneLocationView.swift */; };
+		E15094402094BE720089492E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094362094BE720089492E /* LocationManager.swift */; };
+		E15094412094BE720089492E /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15094372094BE720089492E /* SCNNode+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E142C70520A5CA9A008F39D8 /* SCNGeometry+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNGeometry+Extention.swift"; sourceTree = "<group>"; };
 		E15093F2207CAAD90089492E /* ARKitDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKitDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15093F5207CAAD90089492E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E15093F7207CAAD90089492E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -24,6 +38,18 @@
 		E15093FE207CAADF0089492E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1509401207CAADF0089492E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1509403207CAADF0089492E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E150940F207EB10F0089492E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		E1509410207EB1100089492E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		E150942E2094BE720089492E /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
+		E150942F2094BE720089492E /* SceneLocationEstimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocationEstimate.swift; sourceTree = "<group>"; };
+		E15094302094BE720089492E /* SceneLocationEstimate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SceneLocationEstimate+Extensions.swift"; sourceTree = "<group>"; };
+		E15094312094BE720089492E /* FloatingPoint+Radians.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Radians.swift"; sourceTree = "<group>"; };
+		E15094322094BE720089492E /* LocationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNode.swift; sourceTree = "<group>"; };
+		E15094332094BE720089492E /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		E15094342094BE720089492E /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
+		E15094352094BE720089492E /* SceneLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocationView.swift; sourceTree = "<group>"; };
+		E15094362094BE720089492E /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E15094372094BE720089492E /* SCNNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNNode+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1509411207EB1100089492E /* Crashlytics.framework in Frameworks */,
+				E1509412207EB1100089492E /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +68,8 @@
 		E15093E9207CAAD90089492E = {
 			isa = PBXGroup;
 			children = (
+				E150940F207EB10F0089492E /* Crashlytics.framework */,
+				E1509410207EB1100089492E /* Fabric.framework */,
 				E15093F4207CAAD90089492E /* ARKitDemoApp */,
 				E15093F3207CAAD90089492E /* Products */,
 			);
@@ -56,15 +86,34 @@
 		E15093F4207CAAD90089492E /* ARKitDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				E15093F5207CAAD90089492E /* AppDelegate.swift */,
-				E15093F7207CAAD90089492E /* art.scnassets */,
 				E15093F9207CAAD90089492E /* ViewController.swift */,
+				E142C70520A5CA9A008F39D8 /* SCNGeometry+Extention.swift */,
+				E15093F5207CAAD90089492E /* AppDelegate.swift */,
+				E150942D2094BE720089492E /* Source */,
+				E15093F7207CAAD90089492E /* art.scnassets */,
 				E15093FB207CAAD90089492E /* Main.storyboard */,
 				E15093FE207CAADF0089492E /* Assets.xcassets */,
 				E1509400207CAADF0089492E /* LaunchScreen.storyboard */,
 				E1509403207CAADF0089492E /* Info.plist */,
 			);
 			path = ARKitDemoApp;
+			sourceTree = "<group>";
+		};
+		E150942D2094BE720089492E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E150942E2094BE720089492E /* SCNVector3+Extensions.swift */,
+				E150942F2094BE720089492E /* SceneLocationEstimate.swift */,
+				E15094302094BE720089492E /* SceneLocationEstimate+Extensions.swift */,
+				E15094312094BE720089492E /* FloatingPoint+Radians.swift */,
+				E15094322094BE720089492E /* LocationNode.swift */,
+				E15094332094BE720089492E /* CGPoint+Extensions.swift */,
+				E15094342094BE720089492E /* CLLocation+Extensions.swift */,
+				E15094352094BE720089492E /* SceneLocationView.swift */,
+				E15094362094BE720089492E /* LocationManager.swift */,
+				E15094372094BE720089492E /* SCNNode+Extensions.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +126,7 @@
 				E15093EE207CAAD90089492E /* Sources */,
 				E15093EF207CAAD90089492E /* Frameworks */,
 				E15093F0207CAAD90089492E /* Resources */,
+				E150940D207EAB490089492E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -134,13 +184,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E150940D207EAB490089492E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 36213bc4ba7e3a7f792a16176abfa61690aab7a3 fc986a9c1930110e15d12bec0e6be32a5b52e628a97ba4c0b3e43563fc58fc67";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E15093EE207CAAD90089492E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15094412094BE720089492E /* SCNNode+Extensions.swift in Sources */,
+				E150943F2094BE720089492E /* SceneLocationView.swift in Sources */,
 				E15093FA207CAAD90089492E /* ViewController.swift in Sources */,
+				E150943E2094BE720089492E /* CLLocation+Extensions.swift in Sources */,
+				E15094402094BE720089492E /* LocationManager.swift in Sources */,
+				E15094392094BE720089492E /* SceneLocationEstimate.swift in Sources */,
+				E150943D2094BE720089492E /* CGPoint+Extensions.swift in Sources */,
+				E15094382094BE720089492E /* SCNVector3+Extensions.swift in Sources */,
+				E150943C2094BE720089492E /* LocationNode.swift in Sources */,
+				E142C70620A5CA9A008F39D8 /* SCNGeometry+Extention.swift in Sources */,
+				E150943A2094BE720089492E /* SceneLocationEstimate+Extensions.swift in Sources */,
 				E15093F6207CAAD90089492E /* AppDelegate.swift in Sources */,
+				E150943B2094BE720089492E /* FloatingPoint+Radians.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,13 +360,22 @@
 		E1509407207CAADF0089492E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = FDAF4AFFQX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ARKitDemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = KR.ARKitDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -300,13 +386,22 @@
 		E1509408207CAADF0089492E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = FDAF4AFFQX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ARKitDemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = KR.ARKitDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

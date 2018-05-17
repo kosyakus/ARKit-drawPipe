@@ -17,7 +17,21 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>36213bc4ba7e3a7f792a16176abfa61690aab7a3</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -39,6 +53,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
