@@ -23,6 +23,7 @@ public protocol SceneLocationViewDelegate: class {
     func sceneLocationViewDidSetupSceneNode(sceneLocationView: SceneLocationView, sceneNode: SCNNode)
     
     func sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: SceneLocationView, locationNode: LocationNode)
+    func sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: SceneLocationView, locationNode: SCNNode)
 }
 
 public enum LocationEstimateMethod {
@@ -55,6 +56,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     private var box : SCNNode?
     private var box1 : SCNNode?
     private var box2 : SCNNode?
+    private var locationBoxNodes = [LocationNode]()
     private var locationBoxNodeFrom: LocationNode?
     private var locationBoxNodeTo: LocationNode?
     private var locationBoxNodeFrom2: LocationNode?
@@ -310,17 +312,17 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         }
         
         if self.locationNodeTo == nil {
-            updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom, locationNodeTo: locationNodeTo, line: self.line, box: self.box1)
+            updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom, locationNodeTo: locationNodeTo, line: self.line)//, box: self.box1)
             self.locationNodeTo = locationNodeTo
             self.locationNodeFrom = locationNodeFrom
             //self.locationBoxNodeFrom = locationNodeFrom
-            self.locationBoxNodeTo = locationNodeTo
+            //self.locationBoxNodeTo = locationNodeTo
         } else {
-            updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom, locationNodeTo: locationNodeTo, line: self.line2, box: self.box2)
+            updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom, locationNodeTo: locationNodeTo, line: self.line2)//, box: self.box2)
             self.locationNodeTo2 = locationNodeTo
             self.locationNodeFrom2 = locationNodeFrom
             //self.locationBoxNodeFrom2 = locationNodeFrom
-            self.locationBoxNodeTo2 = locationNodeTo
+            //self.locationBoxNodeTo2 = locationNodeTo
         }
     }
     
@@ -330,16 +332,16 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
             return
         }
         
-        if self.locationBoxNodeTo == nil {
-            updatePositionOfLocationNodesDrawBox(locationNode: locationNode, box: self.box)
-            self.locationBoxNodeTo = locationNode
+        //if self.locationBoxNodeTo == nil {
+            updatePositionOfLocationNodesDrawBox(locationNode: locationNode, initialSetup: true, animated: false, box: self.box)
+            /*self.locationBoxNodeTo = locationNode
         } else {
             updatePositionOfLocationNodesDrawBox(locationNode: locationNode, box: self.box)
             self.locationBoxNodeTo = locationNode
-        }
+        }*/
         
-        //locationNodes.append(locationNode)
-        //sceneNode?.addChildNode(locationNode)
+        locationBoxNodes.append(locationNode)
+        sceneNode?.addChildNode(locationNode)
     }
     
     
@@ -367,6 +369,17 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
                 }
             }
         }
+        //Natali added
+        for locationNode in locationBoxNodes {
+            if !locationNode.locationConfirmed {
+                let currentPoint = CGPoint.pointWithVector(vector: currentPosition)
+                let locationNodePoint = CGPoint.pointWithVector(vector: locationNode.position)
+                
+                if !currentPoint.radiusContainsPoint(radius: CGFloat(SceneLocationView.sceneLimit), point: locationNodePoint) {
+                    confirmLocationOfLocationNode(locationNode)
+                }
+            }
+        }//End
     }
     
     public func locationOfLocationNode(_ locationNode: LocationNode) -> CLLocation {
@@ -400,10 +413,23 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
             }
         }
         if (self.locationNodeFrom != nil) {
-            updatePositionOfLocationNodes(locationNodeFrom: self.locationNodeFrom!, locationNodeTo: self.locationNodeTo!, line: self.line, box: self.box1)
+            updatePositionOfLocationNodes(locationNodeFrom: self.locationNodeFrom!, locationNodeTo: self.locationNodeTo!, line: self.line)//, box: self.box1)
         }
         if (self.locationNodeFrom2 != nil) {
-            updatePositionOfLocationNodes(locationNodeFrom: self.locationNodeFrom2!, locationNodeTo: self.locationNodeTo2!, line: self.line2, box: self.box2)        }
+            updatePositionOfLocationNodes(locationNodeFrom: self.locationNodeFrom2!, locationNodeTo: self.locationNodeTo2!, line: self.line2)//, box: self.box2)
+        }
+        //Natali added
+        for locationNode in locationBoxNodes {
+            if locationNode.continuallyUpdatePositionAndScale {
+                updatePositionOfLocationNodesDrawBox(locationNode: locationNode, box: self.box)
+            }
+        }
+        //if (self.locationBoxNodeTo != nil) {
+            //updatePositionOfLocationNodesDrawBox(locationNode: self.locationBoxNodeTo!, box: self.box)
+        //}
+        /*if (self.locationBoxNodeTo2 != nil) {
+            updatePositionOfLocationNodesDrawBox(locationNode: self.locationBoxNodeTo2!, box: self.box2)
+        }*/
     }
     
     public func updatePositionAndScaleOfLocationNode(locationNode: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1) {
@@ -499,7 +525,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     
     
     //Func draw line by vectors
-    public func updatePositionOfLocationNodes(locationNodeFrom: LocationNode, locationNodeTo: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1, line: SCNNode?, box: SCNNode?) {
+    public func updatePositionOfLocationNodes(locationNodeFrom: LocationNode, locationNodeTo: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1, line: SCNNode?) {//}, box: SCNNode?) {
         
         guard let currentPosition = currentScenePosition(),
             let currentLocation = currentLocation() else {
@@ -548,29 +574,25 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         //let lineNode = SCNNode(geometry: lineFrom(vector: locationNodeFrom.position, toVector: locationNodeTo.position))
         let lineNode = drawlineNode(from: locationNodeFrom.position, to: locationNodeTo.position, radius: 0.5)
         //let boxNode1 = createBox(position: locationNodeFrom.position)
-        let boxNode2 = createBox(position: locationNodeTo.position)
+        //let boxNode2 = createBox(position: locationNodeTo.position)
         if (line == self.line) {
             lineNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
         }
-        if (line != nil) && (box != nil) {//}&& (box2 != nil) {
+        if (line != nil) {//}&& (box != nil) {
             sceneNode?.replaceChildNode(line!, with: lineNode)
-            sceneNode?.replaceChildNode(box!, with: boxNode2)
-            //sceneNode?.replaceChildNode(box2!, with: boxNode2)
+            //sceneNode?.replaceChildNode(box!, with: boxNode2)
         }
         else {
             sceneNode?.addChildNode(lineNode)
-            //sceneNode?.addChildNode(boxNode1)
-            sceneNode?.addChildNode(boxNode2)
+            //sceneNode?.addChildNode(boxNode2)
         }
-        if (line == self.line) && (box == self.box1) {//}&& (box2 == self.box2) {
+        if (line == self.line) {//}&& (box == self.box1) {
             self.line = lineNode
-            self.box1 = boxNode2
-            //self.box2 = boxNode2
+            //self.box1 = boxNode2
         }
         else {
             self.line2 = lineNode
-            //self.box1 = boxNode2
-            self.box2 = boxNode2
+            //self.box2 = boxNode2
         }
     }
     
@@ -591,9 +613,6 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         let height = vector.length()
         let tube = SCNTube(innerRadius: 0.3, outerRadius: 0.4, height: CGFloat(height))
         let node = SCNNode(geometry: tube)
-        //let cylinder = SCNCylinder(radius: radius, height: CGFloat(height))
-        //cylinder.radialSegmentCount = 4
-        //let node = SCNNode(geometry: cylinder)
         node.position = (to + from) / 2
         node.eulerAngles = lineEulerAngles(vector: vector)
         return node
@@ -647,65 +666,23 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         
         locationNode.position = position
         
-        /*let adjustedDistance: CLLocationDistance
-        
-        let distance = locationNodeLocation.distance(from: currentLocation)
-        
-        if locationNode.locationConfirmed &&
-            (distance > 100 || locationNode.continuallyAdjustNodePositionWhenWithinRange || initialSetup) {
-            if distance > 100 {
-                //If the item is too far away, bring it closer and scale it down
-                let scale = 100 / Float(distance)
-                
-                adjustedDistance = distance * Double(scale)
-                
-                let adjustedTranslation = SCNVector3(
-                    x: Float(locationTranslation.longitudeTranslation) * scale,
-                    y: Float(locationTranslation.altitudeTranslation) * scale,
-                    z: Float(locationTranslation.latitudeTranslation) * scale)
-                
-                let position = SCNVector3(
-                    x: currentPosition.x + adjustedTranslation.x,
-                    y: currentPosition.y + adjustedTranslation.y,
-                    z: currentPosition.z - adjustedTranslation.z)
-                
-                locationNode.position = position
-                
-                locationNode.scale = SCNVector3(x: scale, y: scale, z: scale)
-            } else {
-                adjustedDistance = distance
-                let position = SCNVector3(
-                    x: currentPosition.x + Float(locationTranslation.longitudeTranslation),
-                    y: currentPosition.y + Float(locationTranslation.altitudeTranslation),
-                    z: currentPosition.z - Float(locationTranslation.latitudeTranslation))
-                
-                locationNode.position = position
-                locationNode.scale = SCNVector3(x: 1, y: 1, z: 1)
-            }
-        } else {
-            //Calculates distance based on the distance within the scene, as the location isn't yet confirmed
-            adjustedDistance = Double(currentPosition.distance(to: locationNode.position))
-            
-            locationNode.scale = SCNVector3(x: 1, y: 1, z: 1)
-        }*/
-        
-        
-        
         SCNTransaction.commit()
         
-        let boxNode = createBox(position: locationNode.position)
+        var boxNode = createBox(position: locationNode.position)
+        locationDelegate?.sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: self, locationNode: boxNode)
+        locationNode = boxNode
         /*if (box == self.box) {
             boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }*/
-        //locationDelegate?.sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: self, locationNode: locationNode)
-        if (box != nil) {
+    
+        /*if (box != nil) {
             sceneNode?.replaceChildNode(box!, with: boxNode)
-        } else {
-            sceneNode?.addChildNode(boxNode)
-        }
-        if (box == self.box1) {
-            self.box1 = boxNode
-        }
+        } else {*/
+            //sceneNode?.addChildNode(boxNode)
+        //}
+        /*if (box == self.box) {
+            self.box = boxNode
+        }*/
     }
     
     

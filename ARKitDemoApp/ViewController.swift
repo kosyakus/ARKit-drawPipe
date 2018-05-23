@@ -81,8 +81,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode1, locationNodeTo: annotationNode2)
         //sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode2, locationNodeTo: annotationNode4)
         //sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode3, locationNodeTo: annotationNode4)
-        //sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode1)
-        sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode4)
+        sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode1)
+        sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode2)
+        sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode3)
         
     }
     
@@ -213,6 +214,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     }
     
     func sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: SceneLocationView, locationNode: LocationNode) {
+        
+    }
+    
+    func sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: SceneLocationView, locationNode: SCNNode) {
         
     }
     
