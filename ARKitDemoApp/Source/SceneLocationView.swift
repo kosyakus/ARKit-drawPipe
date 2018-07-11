@@ -54,13 +54,8 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     private var line : SCNNode?
     private var line2 : SCNNode?
     private var box : SCNNode?
-    private var box1 : SCNNode?
-    private var box2 : SCNNode?
     private var locationBoxNodes = [LocationNode]()
-    private var locationBoxNodeFrom: LocationNode?
-    private var locationBoxNodeTo: LocationNode?
-    private var locationBoxNodeFrom2: LocationNode?
-    private var locationBoxNodeTo2: LocationNode?
+    private var locationBoxNode: SCNNode?
     
     private var sceneLocationEstimates = [SceneLocationEstimate]()
     
@@ -654,7 +649,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         let locationNodeLocation = locationOfLocationNode(locationNode)
         let locationTranslation = currentLocation.translation(toLocation: locationNodeLocation)
         
-        let adjustedTranslation = SCNVector3(
+        /*let adjustedTranslation = SCNVector3(
             x: Float(locationTranslation.longitudeTranslation),
             y: Float(locationTranslation.altitudeTranslation),
             z: Float(locationTranslation.latitudeTranslation))
@@ -664,13 +659,86 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
             y: currentPosition.y + adjustedTranslation.y,
             z: currentPosition.z - adjustedTranslation.z)
         
-        locationNode.position = position
+        locationNode.position = position*/
+        
+        
+        let adjustedDistance: CLLocationDistance
+        
+        let distance = locationNodeLocation.distance(from: currentLocation)
+        
+        if locationNode.locationConfirmed &&
+            (distance > 100 || locationNode.continuallyAdjustNodePositionWhenWithinRange || initialSetup) {
+            if distance > 100 {
+                //If the item is too far away, bring it closer and scale it down
+                let scale = 100 / Float(distance)
+                
+                adjustedDistance = distance * Double(scale)
+                
+                let adjustedTranslation = SCNVector3(
+                    x: Float(locationTranslation.longitudeTranslation) * scale,
+                    y: Float(locationTranslation.altitudeTranslation) * scale,
+                    z: Float(locationTranslation.latitudeTranslation) * scale)
+                
+                let position = SCNVector3(
+                    x: currentPosition.x + adjustedTranslation.x,
+                    y: currentPosition.y + adjustedTranslation.y,
+                    z: currentPosition.z - adjustedTranslation.z)
+                
+                locationNode.position = position
+                
+                locationNode.scale = SCNVector3(x: scale, y: scale, z: scale)
+            } else {
+                adjustedDistance = distance
+                let position = SCNVector3(
+                    x: currentPosition.x + Float(locationTranslation.longitudeTranslation),
+                    y: currentPosition.y + Float(locationTranslation.altitudeTranslation),
+                    z: currentPosition.z - Float(locationTranslation.latitudeTranslation))
+                
+                locationNode.position = position
+                locationNode.scale = SCNVector3(x: 1, y: 1, z: 1)
+            }
+        } else {
+            //Calculates distance based on the distance within the scene, as the location isn't yet confirmed
+            adjustedDistance = Double(currentPosition.distance(to: locationNode.position))
+            
+            locationNode.scale = SCNVector3(x: 1, y: 1, z: 1)
+        }
+        
+        if let boxNode = locationNode as? LocationBoxNode {
+            //The scale of a node with a billboard constraint applied is ignored
+            //The annotation subnode itself, as a subnode, has the scale applied to it
+            let appliedScale = locationNode.scale
+            locationNode.scale = SCNVector3(x: 1, y: 1, z: 1)
+            
+            var scale: Float
+            
+            if boxNode.scaleRelativeToDistance {
+                scale = appliedScale.y
+                boxNode.boxNode.scale = appliedScale
+            } else {
+                //Scale it to be an appropriate size so that it can be seen
+                scale = Float(adjustedDistance) * 0.181
+                
+                if distance > 3000 {
+                    scale = scale * 0.75
+                }
+                
+                boxNode.boxNode.scale = SCNVector3(x: scale, y: scale, z: scale)
+            }
+            
+            boxNode.pivot = SCNMatrix4MakeTranslation(0, -1.1 * scale, 0)
+        }
+        
+        
+        
+        
+        
         
         SCNTransaction.commit()
         
-        var boxNode = createBox(position: locationNode.position)
-        locationDelegate?.sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: self, locationNode: boxNode)
-        locationNode = boxNode
+        //let boxNode = createBox(position: locationNode.position)
+        locationDelegate?.sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: self, locationNode: locationNode)
+        //locationBoxNode = boxNode
         /*if (box == self.box) {
             boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }*/
@@ -719,7 +787,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     
     func renderer(aRenderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         //Makes the lines thicker
-        glLineWidth(500)
+        //glLineWidth(500)
     }
     
     public func sessionWasInterrupted(_ session: ARSession) {

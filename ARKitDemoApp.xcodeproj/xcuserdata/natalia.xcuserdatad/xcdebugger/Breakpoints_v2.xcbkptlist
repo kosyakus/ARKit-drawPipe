@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548772477.910247"
+            timestampString = "549470578.5240149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "createBox(position:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548772477.940464"
+            timestampString = "549470578.526203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "updatePositionOfLocationNodes(locationNodeFrom:locationNodeTo:initialSetup:animated:duration:line:)"
             landmarkType = "7">
             <Locations>
@@ -114,11 +114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548772477.942593"
+            timestampString = "549470578.526438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "642"
-            endingLineNumber = "642"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "updatePositionOfLocationNodesDrawBox(locationNode:initialSetup:animated:duration:box:)"
             landmarkType = "7">
             <Locations>
@@ -192,11 +192,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548772477.951301"
+            timestampString = "549470578.526649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "677"
-            endingLineNumber = "677"
+            startingLineNumber = "747"
+            endingLineNumber = "747"
             landmarkName = "updatePositionOfLocationNodesDrawBox(locationNode:initialSetup:animated:duration:box:)"
             landmarkType = "7">
          </BreakpointContent>

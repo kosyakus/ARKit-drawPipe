@@ -56,8 +56,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.743924, longitude: 37.560980)
         
         //Nagatinskaya
-        //let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610792, longitude: 37.698402)
-        //let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.609599, longitude: 37.697178)
+        /*let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610792, longitude: 37.698402)
+        let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.609599, longitude: 37.697178)
+        let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.744026, longitude: 37.559644)
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.743924, longitude: 37.560980)*/
         
         //Naro-Fominsk
         //let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.388110, longitude: 36.751822)
@@ -67,6 +69,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let pinLocation1 = CLLocation(coordinate: pinCoordinate1, altitude: altitude)
         let image1 = UIImage(named: "infoPipe")!
         let annotationNode1 = LocationAnnotationNode(location: pinLocation1, image: image1)
+        let boxNode1 = LocationBoxNode(location: pinLocation1, image: image1)
         
         let pinLocation2 = CLLocation(coordinate: pinCoordinate2, altitude: altitude)
         let annotationNode2 = LocationAnnotationNode(location: pinLocation2, image: image1)
@@ -79,9 +82,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         
         sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode3, locationNodeTo: annotationNode1)
         sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode1, locationNodeTo: annotationNode2)
-        //sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode2, locationNodeTo: annotationNode4)
-        //sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode3, locationNodeTo: annotationNode4)
-        sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode1)
+        sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode2, locationNodeTo: annotationNode4)
+        sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode3, locationNodeTo: annotationNode4)
+        sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: boxNode1)
         sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode2)
         sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode3)
         

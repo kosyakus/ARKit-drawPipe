@@ -91,3 +91,40 @@ open class LocationAnnotationNode: LocationNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+open class LocationBoxNode: LocationNode {
+    
+    ///Subnodes and adjustments should be applied to this subnode
+    ///Required to allow scaling at the same time as having a 2D 'billboard' appearance
+    public let boxNode: SCNNode
+    
+    ///Whether the node should be scaled relative to its distance from the camera
+    ///Default value (false) scales it to visually appear at the same size no matter the distance
+    ///Setting to true causes annotation nodes to scale like a regular node
+    ///Scaling relative to distance may be useful with local navigation-based uses
+    ///For landmarks in the distance, the default is correct
+    public var scaleRelativeToDistance = false
+    
+    public init(location: CLLocation?, image: UIImage) {
+        
+        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.blue
+        box.materials = [material]
+        
+        boxNode = SCNNode()
+        boxNode.geometry = box
+        
+        super.init(location: location)
+        
+        let billboardConstraint = SCNBillboardConstraint()
+        billboardConstraint.freeAxes = SCNBillboardAxis.Y
+        constraints = [billboardConstraint]
+        
+        addChildNode(boxNode)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
