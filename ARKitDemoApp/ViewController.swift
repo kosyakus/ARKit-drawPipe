@@ -25,9 +25,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
         sceneLocationView.run()
+        //sceneLocationView.orientToTrueNorth = false //if true - worldAligment set to gravityAndHeading, if false = gravity only
         let coordinate = CLLocationCoordinate2D(latitude: 55.610754, longitude: 37.698376)
         let location = CLLocation(coordinate: coordinate, altitude: 130)
         let image = UIImage(named: "infoPipe")!
@@ -50,10 +49,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.610072, longitude: 37.696591)*/
         
         //Kievskaya
-        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.744323, longitude: 37.560019)
-        let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.744253, longitude: 37.560910)
-        let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.744026, longitude: 37.559644)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.743924, longitude: 37.560980)
+        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
+        let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.746331, longitude: 37.572041)
+        let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.746945, longitude: 37.572273)
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)
         
         //Nagatinskaya
         //let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610792, longitude: 37.698402)
@@ -73,7 +72,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         
         let pinLocation3 = CLLocation(coordinate: pinCoordinate3, altitude: altitude)
         let annotationNode3 = LocationAnnotationNode(location: pinLocation3, image: image1)
-        
+
         let pinLocation4 = CLLocation(coordinate: pinCoordinate4, altitude: altitude)
         let annotationNode4 = LocationAnnotationNode(location: pinLocation4, image: image1)
         
