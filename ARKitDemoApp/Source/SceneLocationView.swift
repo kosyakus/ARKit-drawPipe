@@ -46,11 +46,13 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     public var showAxesNode = false
     
     private(set) var locationNodes = [LocationNode]()
-    private var locationNodeFrom : LocationNode?
-    private var locationNodeTo : LocationNode?
+    private var locationNodeFrom = [LocationNode]()
+    private var locationNodeTo = [LocationNode]()
+    private var lines = [SCNNode]()
+    
+    
     private var locationNodeFrom2 : LocationNode?
     private var locationNodeTo2 : LocationNode?
-    private var line : SCNNode?
     private var line2 : SCNNode?
     private var box : SCNNode?
     private var box1 : SCNNode?
@@ -59,6 +61,8 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     private var locationBoxNodeTo: LocationNode?
     private var locationBoxNodeFrom2: LocationNode?
     private var locationBoxNodeTo2: LocationNode?
+    
+    
     
     private var sceneLocationEstimates = [SceneLocationEstimate]()
     
@@ -300,6 +304,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         sceneNode?.addChildNode(locationNode)
     }
     
+    //line
     public func addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: LocationNode, locationNodeTo: LocationNode) {
         if locationNodeFrom.location == nil || locationNodeFrom.locationConfirmed == false {
             return
@@ -309,19 +314,13 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
             return
         }
         
-        if self.locationNodeTo == nil {
-            updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom, locationNodeTo: locationNodeTo, line: self.line, box: self.box1)
-            self.locationNodeTo = locationNodeTo
-            self.locationNodeFrom = locationNodeFrom
-            //self.locationBoxNodeFrom = locationNodeFrom
-            self.locationBoxNodeTo = locationNodeTo
-        } else {
-            updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom, locationNodeTo: locationNodeTo, line: self.line2, box: self.box2)
-            self.locationNodeTo2 = locationNodeTo
-            self.locationNodeFrom2 = locationNodeFrom
-            //self.locationBoxNodeFrom2 = locationNodeFrom
-            self.locationBoxNodeTo2 = locationNodeTo
-        }
+//        let lineNode = drawlineNode(from: locationNodeFrom.position, to: locationNodeTo.position, radius: 0.5)
+//        lines.append(lineNode)
+        updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom, locationNodeTo: locationNodeTo, new: true)
+        
+        self.locationNodeTo.append(locationNodeTo)
+        self.locationNodeFrom.append(locationNodeFrom)
+        
     }
     
     
@@ -399,11 +398,17 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
                 updatePositionAndScaleOfLocationNode(locationNode: locationNode, animated: true)
             }
         }
-        if (self.locationNodeFrom != nil) {
-            updatePositionOfLocationNodes(locationNodeFrom: self.locationNodeFrom!, locationNodeTo: self.locationNodeTo!, line: self.line, box: self.box1)
+        
+        //added for lines
+        for locationLine in locationNodeFrom {
+            if let i = locationNodeFrom.index(where: {$0 === locationLine}) {
+                if locationLine.continuallyUpdatePositionAndScale {
+                    updatePositionOfLocationNodes(locationNodeFrom: locationNodeFrom[i], locationNodeTo: locationNodeTo[i], new: false, indice: i)
+                }
+            }
         }
-        if (self.locationNodeFrom2 != nil) {
-            updatePositionOfLocationNodes(locationNodeFrom: self.locationNodeFrom2!, locationNodeTo: self.locationNodeTo2!, line: self.line2, box: self.box2)        }
+        
+        
     }
     
     public func updatePositionAndScaleOfLocationNode(locationNode: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1) {
@@ -498,8 +503,11 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     }
     
     
+    
+    
+    
     //Func draw line by vectors
-    public func updatePositionOfLocationNodes(locationNodeFrom: LocationNode, locationNodeTo: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1, line: SCNNode?, box: SCNNode?) {
+    public func updatePositionOfLocationNodes(locationNodeFrom: LocationNode, locationNodeTo: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1, new: Bool = true, indice: Int? = nil) {
         
         guard let currentPosition = currentScenePosition(),
             let currentLocation = currentLocation() else {
@@ -545,44 +553,130 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         
         SCNTransaction.commit()
         
-        //let lineNode = SCNNode(geometry: lineFrom(vector: locationNodeFrom.position, toVector: locationNodeTo.position))
+
         let lineNode = drawlineNode(from: locationNodeFrom.position, to: locationNodeTo.position, radius: 0.5)
-        //let boxNode1 = createBox(position: locationNodeFrom.position)
-        let boxNode2 = createBox(position: locationNodeTo.position)
-        if (line == self.line) {
+        if new {
+            sceneNode?.addChildNode(lineNode)
+            lines.append(lineNode)
+        } else {
+            if let ind = indice, ind % 2 == 0{
+                lineNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+            }
+            if self.locationNodeFrom.count > 0 && lines.count != self.locationNodeFrom.count {
+                sceneNode?.addChildNode(lineNode)
+                lines.append(lineNode)
+            } else {
+                if let ind = indice {
+                    sceneNode?.replaceChildNode(lines[ind], with: lineNode)
+                    lines[ind] = lineNode
+                }
+            }
+            
+        }
+        
+        
+        
+        
+        /*if line == self.lines {
+            sceneNode?.addChildNode(lineNode)
+            
+        } else {
+            for oneLine in lines {
+                if let i = lines.index(where: {$0 === oneLine}) {
+                    sceneNode?.replaceChildNode(lines[i], with: lineNode)
+                }
+            }
+        }
+        
+        
+        if line == self.lines && !lines.isEmpty { //replace node
+            for oneLine in lines {
+                if let i = lines.index(where: {$0 === oneLine}) {
+                    lines[i] = lineNode
+                }
+            }
+        }
+        else { //append new node to lines
+            lines.append(lineNode)
+        }*/
+        
+        
+        
+        
+        
+        /*if (line == self.line) {
             lineNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
         }
-        if (line != nil) && (box != nil) {//}&& (box2 != nil) {
+        if (line != nil) {
             sceneNode?.replaceChildNode(line!, with: lineNode)
-            sceneNode?.replaceChildNode(box!, with: boxNode2)
-            //sceneNode?.replaceChildNode(box2!, with: boxNode2)
         }
         else {
             sceneNode?.addChildNode(lineNode)
-            //sceneNode?.addChildNode(boxNode1)
-            sceneNode?.addChildNode(boxNode2)
         }
-        if (line == self.line) && (box == self.box1) {//}&& (box2 == self.box2) {
+        if (line == self.line) {
             self.line = lineNode
-            self.box1 = boxNode2
-            //self.box2 = boxNode2
         }
         else {
             self.line2 = lineNode
-            //self.box1 = boxNode2
-            self.box2 = boxNode2
-        }
+        }*/
     }
     
-    //line From currently not in use
-    func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry {
+    //Func update line by vectors
+    public func updatePositionOfLocationNodesLines(locationNodeFrom: LocationNode, locationNodeTo: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1) {
         
-        let indices: [Int32] = [0, 1]
-        //let tube = SCNTube(innerRadius: 0.1, outerRadius: 0.2, height: 1)
-        let source = SCNGeometrySource(vertices: [vector1, vector2])
-        let element = SCNGeometryElement(indices: indices, primitiveType: .line)
+        guard let currentPosition = currentScenePosition(),
+            let currentLocation = currentLocation() else {
+                return
+        }
+        SCNTransaction.begin()
+        if animated {
+            SCNTransaction.animationDuration = duration
+        } else {
+            SCNTransaction.animationDuration = 0
+        }
+        let locationNodeLocationTo = locationOfLocationNode(locationNodeTo)
+        let locationTranslationTo = currentLocation.translation(toLocation: locationNodeLocationTo)
         
-        return SCNGeometry(sources: [source], elements: [element])
+        let adjustedTranslationTo = SCNVector3(
+            x: Float(locationTranslationTo.longitudeTranslation),
+            y: Float(locationTranslationTo.altitudeTranslation),
+            z: Float(locationTranslationTo.latitudeTranslation))
+        
+        let position = SCNVector3(
+            x: currentPosition.x + adjustedTranslationTo.x,
+            y: currentPosition.y + adjustedTranslationTo.y,
+            z: currentPosition.z - adjustedTranslationTo.z)
+        
+        locationNodeTo.position = position
+        
+        
+        
+        let locationNodeLocationFrom = locationOfLocationNode(locationNodeFrom)
+        let locationTranslationFrom = currentLocation.translation(toLocation: locationNodeLocationFrom)
+        
+        let adjustedTranslationFrom = SCNVector3(
+            x: Float(locationTranslationFrom.longitudeTranslation),
+            y: Float(locationTranslationFrom.altitudeTranslation),
+            z: Float(locationTranslationFrom.latitudeTranslation))
+        
+        let position2 = SCNVector3(
+            x: currentPosition.x + adjustedTranslationFrom.x,
+            y: currentPosition.y + adjustedTranslationFrom.y,
+            z: currentPosition.z - adjustedTranslationFrom.z)
+        
+        locationNodeFrom.position = position2
+        
+        SCNTransaction.commit()
+        
+        
+        let lineNode = drawlineNode(from: locationNodeFrom.position, to: locationNodeTo.position, radius: 0.5)
+        
+        for oneLine in lines {
+            if let i = lines.index(where: {$0 === oneLine}) {
+                sceneNode?.replaceChildNode(lines[i], with: lineNode)
+                lines[i] = lineNode
+            }
+        }
     }
     
     

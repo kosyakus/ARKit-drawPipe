@@ -15,6 +15,7 @@ import MapKit
 class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, SceneLocationViewDelegate  {
     
     var sceneLocationView = SceneLocationView()
+    let image1 = UIImage(named: "infoPipe")!
 
     @IBOutlet var sceneView: ARSCNView!
     let scene = SCNScene()
@@ -25,9 +26,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
         sceneLocationView.run()
+        //sceneLocationView.orientToTrueNorth = false //if true - worldAligment set to gravityAndHeading, if false = gravity only
         let coordinate = CLLocationCoordinate2D(latitude: 55.610754, longitude: 37.698376)
         let location = CLLocation(coordinate: coordinate, altitude: 130)
         let image = UIImage(named: "infoPipe")!
@@ -50,10 +50,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.610072, longitude: 37.696591)*/
         
         //Kievskaya
-        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.744323, longitude: 37.560019)
-        let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.744253, longitude: 37.560910)
-        let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.744026, longitude: 37.559644)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.743924, longitude: 37.560980)
+        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
+        let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.746331, longitude: 37.572041)
+        let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.746945, longitude: 37.572273)
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)
+        
+        let kievskayaArray = [pinCoordinate1, pinCoordinate2, pinCoordinate3, pinCoordinate4]
         
         //Nagatinskaya
         //let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610792, longitude: 37.698402)
@@ -62,30 +64,64 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         //Naro-Fominsk
         //let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.388110, longitude: 36.751822)
         //let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.387673, longitude: 36.751586)
+        
+        
+        //From TopoOsnovi
+        let coord1 = CLLocationCoordinate2D(latitude: 36.760367898604116, longitude: 55.367471669509968)
+        let coord2 = CLLocationCoordinate2D(latitude: 36.741295019096128, longitude: 55.368076328771217)
+        let coord3 = CLLocationCoordinate2D(latitude: 36.722512369273069, longitude: 55.369712529211597)
+        let coord4 = CLLocationCoordinate2D(latitude: 36.727147989353206, longitude: 55.369760659267122)
+        let coord5 = CLLocationCoordinate2D(latitude: 36.726680897900465, longitude: 55.369885619210557)
+        let coord6 = CLLocationCoordinate2D(latitude: 36.726889438155055, longitude: 55.370270188929318)
+        let coord7 = CLLocationCoordinate2D(latitude: 36.732702159637263, longitude: 55.372679849594263)
+        let coord8 = CLLocationCoordinate2D(latitude: 36.739952479786297, longitude: 55.373548619407885)
+        let coord9 = CLLocationCoordinate2D(latitude: 36.725798708383117, longitude: 55.374056229117521)
+        let coord10 = CLLocationCoordinate2D(latitude: 36.747889238711807, longitude: 55.374074519391691)
+        let coord11 = CLLocationCoordinate2D(latitude: 36.760547169051158, longitude: 55.374927549257833)
+        let coord12 = CLLocationCoordinate2D(latitude: 36.754914339638624, longitude: 55.374962269190966)
+        let coord13 = CLLocationCoordinate2D(latitude: 36.756509969683449, longitude: 55.375527799747097)
+        let coord14 = CLLocationCoordinate2D(latitude: 36.761839618472813, longitude: 55.376734269154156)
+        let coord15 = CLLocationCoordinate2D(latitude: 36.764187148969846, longitude: 55.377428159416219)
+        let coord16 = CLLocationCoordinate2D(latitude: 36.761386909493012, longitude: 55.379232709215664)
+        let coord17 = CLLocationCoordinate2D(latitude: 36.756674168462204, longitude: 55.387049118760281)
+        let coord18 = CLLocationCoordinate2D(latitude: 36.756229038374919, longitude: 55.387430909904936)
+        
         let altitude:Double = 130
         
-        let pinLocation1 = CLLocation(coordinate: pinCoordinate1, altitude: altitude)
-        let image1 = UIImage(named: "infoPipe")!
-        let annotationNode1 = LocationAnnotationNode(location: pinLocation1, image: image1)
+        let coordArray = [coord1, coord2, coord3, coord4, coord5, coord6, coord7, coord8, coord9, coord10, coord11, coord12, coord13, coord14, coord15, coord16, coord17, coord18]
         
-        let pinLocation2 = CLLocation(coordinate: pinCoordinate2, altitude: altitude)
-        let annotationNode2 = LocationAnnotationNode(location: pinLocation2, image: image1)
+        for (i, _) in coordArray.enumerated() {
+            if i < coordArray.count-1 {
+                createVector(firstCoordinate: coordArray[i], secondCoordinate: coordArray[i+1], altitude: altitude)
+            }
+        }
         
-        let pinLocation3 = CLLocation(coordinate: pinCoordinate3, altitude: altitude)
-        let annotationNode3 = LocationAnnotationNode(location: pinLocation3, image: image1)
+        for (i, _) in kievskayaArray.enumerated() {
+            if i < kievskayaArray.count-1 {
+                createVector(firstCoordinate: kievskayaArray[i], secondCoordinate: kievskayaArray[i+1], altitude: altitude)
+            }
+        }
         
-        let pinLocation4 = CLLocation(coordinate: pinCoordinate4, altitude: altitude)
-        let annotationNode4 = LocationAnnotationNode(location: pinLocation4, image: image1)
         
-        sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode3, locationNodeTo: annotationNode1)
-        sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode1, locationNodeTo: annotationNode2)
-        //sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode2, locationNodeTo: annotationNode4)
-        //sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode3, locationNodeTo: annotationNode4)
+        /*createVector(firstCoordinate: pinCoordinate1, secondCoordinate: pinCoordinate2, altitude: altitude)
+        createVector(firstCoordinate: pinCoordinate2, secondCoordinate: pinCoordinate3, altitude: altitude)
+        createVector(firstCoordinate: pinCoordinate3, secondCoordinate: pinCoordinate4, altitude: altitude)*/
+        
+        
         //sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode1)
-        sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode4)
+        //sceneLocationView.addBoxLocationNodeWithConfirmedLocation(locationNode: annotationNode4)
         
     }
     
+    
+    func createVector(firstCoordinate: CLLocationCoordinate2D, secondCoordinate: CLLocationCoordinate2D, altitude: Double) {
+        let pinLocation1 = CLLocation(coordinate: firstCoordinate, altitude: altitude)
+        let annotationNode1 = LocationAnnotationNode(location: pinLocation1, image: image1)
+        let pinLocation2 = CLLocation(coordinate: secondCoordinate, altitude: altitude)
+        let annotationNode2 = LocationAnnotationNode(location: pinLocation2, image: image1)
+        
+        sceneLocationView.addVectorLocationNodeWithConfirmedLocation(locationNodeFrom: annotationNode1, locationNodeTo: annotationNode2)
+    }
     
     
     

@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -20,12 +20,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548760704.426682"
+            timestampString = "560440251.309815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "createBox(position:)"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "sceneNode"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
+            timestampString = "560440251.310643"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "addLocationNodeForCurrentPosition(locationNode:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -36,75 +52,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548760704.440605"
+            timestampString = "560440251.310758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
-            landmarkName = "updatePositionOfLocationNodes(locationNodeFrom:locationNodeTo:initialSetup:animated:duration:line:box:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 2 of ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodes(locationNodeFrom: ARKitDemoApp.LocationNode, locationNodeTo: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, line: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260473.877478"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "487"
-                  endingLineNumber = "487"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 3 of ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodes(locationNodeFrom: ARKitDemoApp.LocationNode, locationNodeTo: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, line: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260473.8884749"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "487"
-                  endingLineNumber = "487"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 4 of ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodes(locationNodeFrom: ARKitDemoApp.LocationNode, locationNodeTo: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, line: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260473.8926131"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "487"
-                  endingLineNumber = "487"
-                  offsetFromSymbolStart = "8">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodes(locationNodeFrom: ARKitDemoApp.LocationNode, locationNodeTo: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, line: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260473.897053"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "489"
-                  endingLineNumber = "489"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
+            startingLineNumber = "386"
+            endingLineNumber = "386"
+            landmarkName = "SceneLocationView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -114,90 +68,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548760704.441875"
+            timestampString = "560440251.310842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
-            landmarkName = "updatePositionOfLocationNodesDrawBox(locationNode:initialSetup:animated:duration:box:)"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "addVectorLocationNodeWithConfirmedLocation(locationNodeFrom:locationNodeTo:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 1 of ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodesDrawBox(locationNode: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, box: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260864.417997"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "598"
-                  endingLineNumber = "598"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 2 of ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodesDrawBox(locationNode: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, box: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260864.422145"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "598"
-                  endingLineNumber = "598"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 3 of ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodesDrawBox(locationNode: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, box: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260864.425923"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "598"
-                  endingLineNumber = "598"
-                  offsetFromSymbolStart = "8">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ARKitDemoApp.SceneLocationView.updatePositionOfLocationNodesDrawBox(locationNode: ARKitDemoApp.LocationNode, initialSetup: Swift.Bool, animated: Swift.Bool, duration: Swift.Double, box: Swift.Optional&lt;__ObjC.SCNNode&gt;) -&gt; ()"
-                  moduleName = "ARKitDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natalie/Desktop/KR%20Digital/ARKitDemoApp/ARKitDemoApp/Source/SceneLocationView.swift"
-                  timestampString = "548260864.429811"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "600"
-                  endingLineNumber = "600"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "548760704.4427789"
+            timestampString = "560440251.3109421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "701"
-            endingLineNumber = "701"
-            landmarkName = "updatePositionOfLocationNodesDrawBox(locationNode:initialSetup:animated:duration:box:)"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "updatePositionAndScaleOfLocationNodes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
+            timestampString = "560440251.311033"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "676"
+            endingLineNumber = "676"
+            landmarkName = "updatePositionOfLocationNodesLines(locationNodeFrom:locationNodeTo:initialSetup:animated:duration:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
+            timestampString = "560440251.311134"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
+            landmarkName = "updatePositionOfLocationNodes(locationNodeFrom:locationNodeTo:initialSetup:animated:duration:new:indice:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/ViewController.swift"
+            timestampString = "560440251.311231"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "drawLine()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
