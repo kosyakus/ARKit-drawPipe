@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "554396855.886278"
+            timestampString = "560440251.309815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "554396855.934931"
+            timestampString = "560440251.310643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "554396855.942729"
+            timestampString = "560440251.310758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "386"
@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "554396855.951902"
+            timestampString = "560440251.310842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "554396855.955045"
+            timestampString = "560440251.3109421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "406"
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "554396855.957317"
+            timestampString = "560440251.311033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "676"
@@ -112,16 +112,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARKitDemoApp/Source/SceneLocationView.swift"
-            timestampString = "554396855.959866"
+            timestampString = "560440251.311134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "560"
             endingLineNumber = "560"
             landmarkName = "updatePositionOfLocationNodes(locationNodeFrom:locationNodeTo:initialSetup:animated:duration:new:indice:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ARKitDemoApp/ViewController.swift"
+            timestampString = "560440251.311231"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "drawLine()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
