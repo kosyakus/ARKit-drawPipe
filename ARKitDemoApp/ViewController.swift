@@ -22,6 +22,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     var infoLabel = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0),
                                           width: CGFloat(100), height: CGFloat(50)))
     var infoView = UIView()
+    var textFieldView = UIView()
+    
+    @IBOutlet weak var addPointView: UIView!
+    @IBOutlet weak var addCommentTextField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,21 +44,22 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         drawLine()
         createView()
         addTapGestureToSceneView()
+        addPointView.isHidden = true
     }
     
     
     func drawLine() {
         //Orekhovo
-        /*let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610218, longitude: 37.698873)
+        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610218, longitude: 37.698873)
         let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.609580, longitude: 37.697768)
         let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.610664, longitude: 37.697487)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.610072, longitude: 37.696591)*/
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.610072, longitude: 37.696591)
         
         //Kievskaya
-        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
+        /*let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
         let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.746331, longitude: 37.572041)
         let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.746945, longitude: 37.572273)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)*/
         
         let kievskayaArray = [pinCoordinate1, pinCoordinate2, pinCoordinate3, pinCoordinate4]
         
@@ -86,7 +92,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let coord17 = CLLocationCoordinate2D(latitude: 36.756674168462204, longitude: 55.387049118760281)
         let coord18 = CLLocationCoordinate2D(latitude: 36.756229038374919, longitude: 55.387430909904936)
         
-        let altitude:Double = 130
+        let altitude:Double = 180
         
         let coordArray = [coord1, coord2, coord3, coord4, coord5, coord6, coord7, coord8, coord9, coord10, coord11, coord12, coord13, coord14, coord15, coord16, coord17, coord18]
         
@@ -129,8 +135,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let imageName = "infoPipe.png"
         let image = UIImage(named: imageName)
         let imageView = UIImageView(image: image!)
-        infoView.frame = CGRect(x: 150, y: 150,
-        width: CGFloat(50), height: CGFloat(100))
+        infoView.frame = CGRect(x: 150, y: 150, width: CGFloat(50), height: CGFloat(100))
         infoView.addSubview(imageView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.imageTapped(withGestureRecognizer:)))
@@ -144,11 +149,32 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         node.position = SCNVector3(0.1, -0.1, -0.4)*/
     }
     
+    /*func createTextField() {
+        textFieldView.frame = CGRect(x: 150, y: 150, width: CGFloat(150), height: CGFloat(200))
+        let notesTextField = UITextField(frame: CGRect(x: 0, y: 0, width: textFieldView.frame.width, height: 100))
+        
+        let sendButton = UIButton(frame: CGRect(x: 0, y: 150, width: textFieldView.frame.width, height: 44))
+        sendButton.titleLabel?.text = "Отправить"
+        
+        textFieldView.addSubview(notesTextField)
+        textFieldView.addSubview(sendButton)
+        
+        sendButton.addTarget(self, action: #selector(self.textFieldTapped(_:)), for: .touchUpInside)
+    }*/
+    
     @objc func imageTapped(withGestureRecognizer recognizer: UIGestureRecognizer) {
         //infoView.removeFromSuperview()
         sceneLocationView.willRemoveSubview(infoView)
         
     }
+    
+    /*@objc func textFieldTapped(_ sender: UIButton) {
+        //infoView.removeFromSuperview()
+        sceneLocationView.willRemoveSubview(textFieldView)
+        
+    }*/
+    
+    
     
     func addTapGestureToSceneView() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.didTap(withGestureRecognizer:)))
@@ -158,7 +184,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     @objc func didTap(withGestureRecognizer recognizer: UIGestureRecognizer) {
         let tapLocation = recognizer.location(in: sceneLocationView)
         let hitTestResults = sceneLocationView.hitTest(tapLocation)
-        guard let node = hitTestResults.first?.node else { infoView.removeFromSuperview(); return }
+        guard let node = hitTestResults.first?.node else {
+            infoView.removeFromSuperview();
+            addPointView.isHidden = false
+            sceneLocationView.addSubview(addPointView)
+            return
+        }
         
         //node.removeFromParentNode()
         
@@ -172,6 +203,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     }
     
    
+    @IBAction func closeTheView(_ sender: Any) {
+        addPointView.isHidden = true
+        sceneLocationView.willRemoveSubview(addPointView)
+        view.endEditing(true)
+    }
+    
+    @IBAction func sendTheComment(_ sender: Any) {
+        addPointView.isHidden = true
+        sceneLocationView.willRemoveSubview(addPointView)
+        view.endEditing(true)
+    }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
