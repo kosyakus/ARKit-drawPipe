@@ -65,11 +65,15 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="26Q-Ry-hfg" firstAttribute="centerX" secondItem="SxY-X5-Cfw" secondAttribute="centerX" id="Kuu-Dz-y7d"/>
                             <constraint firstItem="26Q-Ry-hfg" firstAttribute="centerY" secondItem="SxY-X5-Cfw" secondAttribute="centerY" id="kol-gL-SGl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n43-hL-zSF"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fke-J4-trT" appends="YES" id="jl7-ue-yVJ"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="addCommentTextField" destination="dMQ-bz-IFI" id="fpt-bT-W02"/>
@@ -77,6 +81,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="fke-J4-trT">
+                    <connections>
+                        <action selector="longPress:" destination="BV1-FR-VrT" id="vQn-ZS-XcR"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="102.99850074962519"/>
         </scene>

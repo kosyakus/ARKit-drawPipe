@@ -185,9 +185,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let tapLocation = recognizer.location(in: sceneLocationView)
         let hitTestResults = sceneLocationView.hitTest(tapLocation)
         guard let node = hitTestResults.first?.node else {
-            infoView.removeFromSuperview();
-            addPointView.isHidden = false
-            sceneLocationView.addSubview(addPointView)
+            infoView.removeFromSuperview()
             return
         }
         
@@ -215,6 +213,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         view.endEditing(true)
     }
     
+    @IBAction func longPress(_ sender: Any) {
+        addPointView.isHidden = false
+        sceneLocationView.addSubview(addPointView)
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
