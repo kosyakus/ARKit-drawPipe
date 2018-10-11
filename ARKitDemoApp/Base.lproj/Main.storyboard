@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,16 +14,71 @@
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="ARKitDemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="wmN-3w-XQj">
+                    <view key="view" contentMode="scaleToFill" id="SxY-X5-Cfw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26Q-Ry-hfg">
+                                <rect key="frame" x="67.5" y="258.5" width="240" height="150"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите текст" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMQ-bz-IFI">
+                                        <rect key="frame" x="4" y="30" width="232" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="sPV-iL-yFo"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xQ-zv-6LB">
+                                        <rect key="frame" x="4" y="120" width="232" height="30"/>
+                                        <state key="normal" title="Отправить"/>
+                                        <connections>
+                                            <action selector="sendTheComment:" destination="BV1-FR-VrT" eventType="touchUpInside" id="eD6-Dp-FPI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-25-Yu3">
+                                        <rect key="frame" x="210" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="LDh-Uy-vsZ"/>
+                                            <constraint firstAttribute="width" constant="30" id="Rdy-Gp-lHb"/>
+                                        </constraints>
+                                        <state key="normal" title="✖️"/>
+                                        <connections>
+                                            <action selector="closeTheView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mZQ-nA-fs7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5xQ-zv-6LB" firstAttribute="leading" secondItem="26Q-Ry-hfg" secondAttribute="leading" constant="4" id="0pw-2q-VSM"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZKz-25-Yu3" secondAttribute="trailing" id="1ax-6o-86V"/>
+                                    <constraint firstAttribute="width" constant="240" id="2T5-hd-1jU"/>
+                                    <constraint firstAttribute="trailing" secondItem="5xQ-zv-6LB" secondAttribute="trailing" constant="4" id="A0B-wK-JKj"/>
+                                    <constraint firstItem="ZKz-25-Yu3" firstAttribute="top" secondItem="26Q-Ry-hfg" secondAttribute="top" id="Nz1-l0-uXI"/>
+                                    <constraint firstItem="dMQ-bz-IFI" firstAttribute="leading" secondItem="26Q-Ry-hfg" secondAttribute="leading" constant="4" id="RWL-Qc-uTL"/>
+                                    <constraint firstAttribute="bottom" secondItem="5xQ-zv-6LB" secondAttribute="bottom" id="RjE-NH-jo3"/>
+                                    <constraint firstItem="dMQ-bz-IFI" firstAttribute="top" secondItem="26Q-Ry-hfg" secondAttribute="top" constant="30" id="SYL-ud-p86"/>
+                                    <constraint firstAttribute="trailing" secondItem="dMQ-bz-IFI" secondAttribute="trailing" constant="4" id="XtF-B2-n9y"/>
+                                    <constraint firstAttribute="height" constant="150" id="yQe-ZW-7Yp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="26Q-Ry-hfg" firstAttribute="centerX" secondItem="SxY-X5-Cfw" secondAttribute="centerX" id="Kuu-Dz-y7d"/>
+                            <constraint firstItem="26Q-Ry-hfg" firstAttribute="centerY" secondItem="SxY-X5-Cfw" secondAttribute="centerY" id="kol-gL-SGl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n43-hL-zSF"/>
+                    </view>
                     <connections>
-                        <outlet property="sceneView" destination="wmN-3w-XQj" id="ee9-Zz-K4z"/>
+                        <outlet property="addCommentTextField" destination="dMQ-bz-IFI" id="fpt-bT-W02"/>
+                        <outlet property="addPointView" destination="26Q-Ry-hfg" id="8Ch-qK-Exi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="102.99850074962519"/>
         </scene>
     </scenes>
 </document>
