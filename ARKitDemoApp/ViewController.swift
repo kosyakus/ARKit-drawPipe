@@ -50,16 +50,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     
     func drawLine() {
         //Orekhovo
-        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610218, longitude: 37.698873)
+        /*let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610218, longitude: 37.698873)
         let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.609580, longitude: 37.697768)
         let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.610664, longitude: 37.697487)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.610072, longitude: 37.696591)
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.610072, longitude: 37.696591)*/
         
         //Kievskaya
-        /*let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
+        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
         let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.746331, longitude: 37.572041)
         let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.746945, longitude: 37.572273)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)*/
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)
         
         let kievskayaArray = [pinCoordinate1, pinCoordinate2, pinCoordinate3, pinCoordinate4]
         
@@ -92,7 +92,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let coord17 = CLLocationCoordinate2D(latitude: 36.756674168462204, longitude: 55.387049118760281)
         let coord18 = CLLocationCoordinate2D(latitude: 36.756229038374919, longitude: 55.387430909904936)
         
-        let altitude:Double = 180
+        let altitude:Double = 130
         
         let coordArray = [coord1, coord2, coord3, coord4, coord5, coord6, coord7, coord8, coord9, coord10, coord11, coord12, coord13, coord14, coord15, coord16, coord17, coord18]
         
@@ -193,29 +193,72 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         
         //sceneView.addSubview(infoView)
         sceneLocationView.addSubview(infoView)
-        
+        sceneLocationView.scene.rootNode.addChildNode(createPoint(position: node.position))
         //let node1 = label()
         //scene.rootNode.addChildNode(node1)
         
         
     }
     
+    /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let location = touches.first!.location(in: sceneLocationView)
+        var hitTestOptions = [SCNHitTestOption: Any]()
+        hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
+        let hitResults: [SCNHitTestResult]  = sceneLocationView.hitTest(location, options: hitTestOptions)
+        
+        let hitResultsFeaturePoints: [ARHitTestResult] = sceneLocationView.hitTest(location, types: .featurePoint)
+        // The property hit.worldTransform is a 4×4 matrix that represents the combined position, rotation or orientation, and scale of an object in three-dimensional space.
+        if let hit = hitResultsFeaturePoints.first {
+            sceneLocationView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
+        }
+        
+    }*/
+    
+    var sphere = SCNNode()
+    
+    func createPoint(position: SCNVector3) -> SCNNode  {
+        let sphere = SCNSphere(radius: 0.003)
+        let sphereNode = SCNNode(geometry: sphere)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.red
+        sphere.materials = [material]
+        sphereNode.position = position
+        return sphereNode
+    }
    
     @IBAction func closeTheView(_ sender: Any) {
         addPointView.isHidden = true
         sceneLocationView.willRemoveSubview(addPointView)
         view.endEditing(true)
+        sphere.removeFromParentNode()
     }
     
     @IBAction func sendTheComment(_ sender: Any) {
         addPointView.isHidden = true
         sceneLocationView.willRemoveSubview(addPointView)
         view.endEditing(true)
+        sphere.removeFromParentNode()
     }
     
-    @IBAction func longPress(_ sender: Any) {
+    @IBAction func longPresss(_ sender: Any) {
         addPointView.isHidden = false
         sceneLocationView.addSubview(addPointView)
+    }
+    
+    @objc func longPress(_ gesture: UILongPressGestureRecognizer) {
+        let tappedNode = self.sceneLocationView.hitTest(gesture.location(in: gesture.view), types: ARHitTestResult.ResultType.featurePoint)
+        //let tappedNode = self.sceneLocationView.hitTest(gesture.location(in: gesture.view), options: [:])
+        guard let result: ARHitTestResult = tappedNode.first else {
+            return
+        }
+        // create position of ball based on tap result
+        let position = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
+        
+        addPointView.isHidden = false
+        sceneLocationView.addSubview(addPointView)
+        sphere = createPoint(position: position)
+        sceneLocationView.sceneNode?.addChildNode(sphere)
+        
     }
     
     
