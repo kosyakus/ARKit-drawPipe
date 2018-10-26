@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>8</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -36,8 +36,12 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>This application will use the camera for Augmented Reality.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>For ARKit</string>
+	<key>NSLocationUsageDescription</key>
+	<string>For ARKit</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>For ARKit</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
