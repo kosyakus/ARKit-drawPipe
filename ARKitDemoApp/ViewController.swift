@@ -30,8 +30,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            // Create a session configuration
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         
-        sceneLocationView.run()
+        configuration.worldAlignment = .camera
+        
+        // Run the view's session
+        sceneLocationView.session.run(configuration)
+        
+        //sceneLocationView.run()
         //sceneLocationView.orientToTrueNorth = false //if true - worldAligment set to gravityAndHeading, if false = gravity only
         let coordinate = CLLocationCoordinate2D(latitude: 55.610754, longitude: 37.698376)
         let location = CLLocation(coordinate: coordinate, altitude: 130)
