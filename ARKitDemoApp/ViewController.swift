@@ -64,20 +64,20 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.610072, longitude: 37.696591)*/
         
         //Kievskaya
-        /*let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
+        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.746844, longitude: 37.571222)
         let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.746331, longitude: 37.572041)
         let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.746945, longitude: 37.572273)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)*/
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.747183, longitude: 37.571653)
         
         //Nagatinskaya
         //let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.610792, longitude: 37.698402)
         //let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.609599, longitude: 37.697178)
         
         //Naro-Fominsk
-        let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.388301, longitude: 36.751658)
+        /*let pinCoordinate1 = CLLocationCoordinate2D(latitude: 55.388301, longitude: 36.751658)
         let pinCoordinate2 = CLLocationCoordinate2D(latitude: 55.387554, longitude: 36.750807)
         let pinCoordinate3 = CLLocationCoordinate2D(latitude: 55.387486, longitude: 36.751893)
-        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.387948, longitude: 36.752407)
+        let pinCoordinate4 = CLLocationCoordinate2D(latitude: 55.387948, longitude: 36.752407)*/
         
         let kievskayaArray = [pinCoordinate1, pinCoordinate2, pinCoordinate3, pinCoordinate4]
         
