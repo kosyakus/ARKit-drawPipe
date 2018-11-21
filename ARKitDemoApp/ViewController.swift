@@ -101,7 +101,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, MKMapViewDelegate, Sc
         let coord17 = CLLocationCoordinate2D(latitude: 36.756674168462204, longitude: 55.387049118760281)
         let coord18 = CLLocationCoordinate2D(latitude: 36.756229038374919, longitude: 55.387430909904936)
         
-        let altitude:Double = 130
+        let altitude:Double = 115
         
         let coordArray = [coord1, coord2, coord3, coord4, coord5, coord6, coord7, coord8, coord9, coord10, coord11, coord12, coord13, coord14, coord15, coord16, coord17, coord18]
         
