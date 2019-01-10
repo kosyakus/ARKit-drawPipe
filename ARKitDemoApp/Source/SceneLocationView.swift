@@ -555,6 +555,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         
 
         let lineNode = drawlineNode(from: locationNodeFrom.position, to: locationNodeTo.position, radius: 0.5)
+        lineNode.position.y = Float(-30)
         if new {
             sceneNode?.addChildNode(lineNode)
             lines.append(lineNode)
@@ -622,7 +623,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     }
     
     //Func update line by vectors
-    public func updatePositionOfLocationNodesLines(locationNodeFrom: LocationNode, locationNodeTo: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1) {
+    /*public func updatePositionOfLocationNodesLines(locationNodeFrom: LocationNode, locationNodeTo: LocationNode, initialSetup: Bool = false, animated: Bool = false, duration: TimeInterval = 0.1) {
         
         guard let currentPosition = currentScenePosition(),
             let currentLocation = currentLocation() else {
@@ -677,7 +678,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
                 lines[i] = lineNode
             }
         }
-    }
+    }*/
     
     
     func drawlineNode(from: SCNVector3, to: SCNVector3, radius: CGFloat = 0.25) -> SCNNode {
@@ -688,7 +689,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         //let cylinder = SCNCylinder(radius: radius, height: CGFloat(height))
         //cylinder.radialSegmentCount = 4
         //let node = SCNNode(geometry: cylinder)
-        node.position = (to + from) / 2
+        node.position = (to + from) / 2 //SCNVector3((to.x + from.x)/2, -5, (to.z + from.z)/2)
         node.eulerAngles = lineEulerAngles(vector: vector)
         return node
     }
@@ -813,6 +814,37 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     
     //MARK: ARSCNViewDelegate
     
+    /*func createFloorNode(anchor:ARPlaneAnchor) ->SCNNode{
+        let floorNode = SCNNode(geometry: SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))) //1
+        floorNode.position=SCNVector3(anchor.center.x,0,anchor.center.z)                                               //2
+        floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue                                             //3
+        floorNode.geometry?.firstMaterial?.isDoubleSided = true                                                        //4
+        floorNode.eulerAngles = SCNVector3(Double.pi/2,0,0)                                                    //5
+        return floorNode                                                                                               //6
+    }
+    
+    private func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else {return} //1
+        let planeNode = createFloorNode(anchor: planeAnchor) //2
+        node.addChildNode(planeNode) //3
+    }
+    
+    private func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
+        node.enumerateChildNodes { (node, _) in
+            node.removeFromParentNode()
+        }
+        let planeNode = createFloorNode(anchor: planeAnchor)
+        node.addChildNode(planeNode)
+    }
+    
+    private func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        guard let _ = anchor as? ARPlaneAnchor else {return}
+        node.enumerateChildNodes { (node, _) in
+            node.removeFromParentNode()
+        }
+    }*/
+    
     public func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
         if sceneNode == nil {
             sceneNode = SCNNode()
@@ -836,7 +868,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     
     func renderer(aRenderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         //Makes the lines thicker
-        glLineWidth(500)
+        //glLineWidth(500)
     }
     
     public func sessionWasInterrupted(_ session: ARSession) {

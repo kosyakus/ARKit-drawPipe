@@ -30,7 +30,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         super.init()
         
         self.locationManager = CLLocationManager()
-        self.locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager!.desiredAccuracy = kCLLocationAccuracyNearestTenMeters //kCLLocationAccuracyBestForNavigation
         self.locationManager!.distanceFilter = 7 //kCLDistanceFilterNone
         self.locationManager!.headingFilter = kCLHeadingFilterNone
         self.locationManager!.pausesLocationUpdatesAutomatically = false
@@ -64,11 +64,23 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        for location in locations {
+        /*for location in locations {
             self.delegate?.locationManagerDidUpdateLocation(self, location: location)
         }
         
-        self.currentLocation = manager.location
+        self.currentLocation = manager.location*/
+        
+        //1
+        if locations.count > 0 {
+            let location = locations.last!
+            print("Accuracy: \(location.horizontalAccuracy)")
+            
+            //2
+            if location.horizontalAccuracy < 100 {
+                //3
+                manager.stopUpdatingLocation()
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
